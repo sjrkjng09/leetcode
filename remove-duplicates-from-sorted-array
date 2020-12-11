@@ -1,0 +1,61 @@
+/******************************************************************************
+
+                            Online C Compiler.
+                Code, Compile, Run and Debug C program online.
+Write your code in this editor and press "Run" button to compile and execute it.
+https://leetcode.com/problems/remove-duplicates-from-sorted-array/submissions/
+*******************************************************************************/
+
+#include <stdio.h>
+#include <stdlib.h>
+#include <stdbool.h>
+
+int removeDuplicates(int* nums, int numsSize)
+{
+    int *arr = (int *)malloc(numsSize * sizeof(int));
+    bool flag = false;
+    int count = 0;
+    int x = 0;
+    for(int i = 0; i< numsSize; i++)
+    {
+        for(int j = 0; j < numsSize; j++)
+        {
+            if(nums[i] == arr[j])
+            {
+                flag = true;
+            }
+        }
+        if(true != flag)
+        {
+            arr[count] = nums[i];
+            count++;
+        }
+        flag = false;
+    }
+
+
+    while (arr[x] != NULL)
+    {
+        nums[x] = arr[x];
+        x++;
+    }
+    
+
+    return count;    
+}
+
+int main()
+{
+    int arr[11] = {1,1,2,1,1,1,7,9,6,1,8};
+    int size = removeDuplicates(arr, 11);
+    int i = 0;
+
+    printf("\n");
+    while(i < size)
+    {
+        printf("%d ", arr[i]);
+        i++;
+    }
+
+    return 0;
+}
